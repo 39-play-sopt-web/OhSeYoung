@@ -1,0 +1,554 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: #dfffee;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+
+/* 헤더 */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+
+  width: 100%;
+  height: 70px;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid #ddd;
+}
+
+.header-left,
+.header-center,
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 22px;
+}
+
+.profile-link,
+.github-link {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: 44px;
+  height: 44px;
+
+  object-fit: cover;
+  border-radius: 50%;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.github-icon {
+  width: 38px;
+  height: 38px;
+
+  object-fit: contain;
+
+  transition: transform 0.2s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+.github-icon:hover {
+  transform: scale(1.1);
+}
+
+
+/* 전체 레이아웃 */
+
+.page-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+
+  gap: 26px;
+
+  width: calc(100% - 48px);
+  margin: 0 auto;
+}
+
+
+/* 왼쪽 네비게이션 */
+
+.navigation {
+  position: sticky;
+  top: 110px;
+
+  align-self: start;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 220px;
+  margin-top: 60px;
+
+  background-color: rgba(255, 255, 255, 0.55);
+
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.navigation a {
+  padding: 26px 24px;
+
+  color: #222;
+  text-decoration: none;
+
+  font-size: 22px;
+  font-weight: 500;
+
+  background-color: rgba(255, 255, 255, 0.22);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.65);
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.navigation a:last-child {
+  border-bottom: none;
+}
+
+.navigation a:hover {
+  background-color: #18856f;
+  color: white;
+}
+
+.navigation a:first-child {
+  border-radius: 20px 20px 7px 7px;
+}
+
+.navigation a:last-child {
+  border-radius: 7px 7px 20px 20px;
+}
+
+
+/* 본문 공통 */
+
+.main-content {
+  min-width: 0;
+  width: 100%;
+
+  padding: 60px 0;
+}
+
+.section {
+  min-height: 450px;
+
+  margin-bottom: 40px;
+  padding: 40px;
+
+  background-color: rgba(255, 255, 255, 0.75);
+
+  border-radius: 20px;
+
+  scroll-margin-top: 100px;
+}
+
+.section h2 {
+  margin-top: 0;
+}
+
+
+/* 포토 덤프 */
+
+.photo-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+
+  aspect-ratio: 2 / 1;
+
+  gap: 12px;
+}
+
+.photo-item {
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+}
+
+.photo-item img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.3s ease;
+}
+
+.photo-item:hover img {
+  transform: scale(1.08);
+}
+
+.photo-1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.photo-2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.photo-3 {
+  grid-column: 3 / 5;
+  grid-row: 1;
+}
+
+.photo-4 {
+  grid-column: 1 / 4;
+  grid-row: 2 / 4;
+}
+
+.photo-5 {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+.photo-6 {
+  grid-column: 4;
+  grid-row: 3;
+}
+
+
+/* 좋아하는 것 */
+
+.likes-description {
+  margin-bottom: 24px;
+  font-size: 18px;
+}
+
+.likes-scroll {
+  display: flex;
+
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 8px 0;
+
+  scroll-snap-type: x mandatory;
+
+  scrollbar-width: none;
+}
+
+.likes-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* 고양이 사진 10장 한 세트 */
+.likes-set {
+  display: flex;
+  flex-shrink: 0;
+
+  gap: 16px;
+  padding-right: 16px;
+
+  animation: cat-scroll 40s linear infinite;
+}
+
+.likes-card {
+  flex: 0 0 260px;
+
+  height: 320px;
+
+  overflow: hidden;
+
+  background-color: #fff;
+  border-radius: 18px;
+
+  scroll-snap-align: start;
+}
+
+.likes-card img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.3s ease;
+}
+
+.likes-card:hover img {
+  transform: scale(1.06);
+}
+
+/* 마우스를 올리면 자동 이동 멈춤 */
+.likes-scroll:hover .likes-set {
+  animation-play-state: paused;
+}
+
+/* 사진 한 묶음 길이만큼 왼쪽으로 이동 */
+@keyframes cat-scroll {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+
+/* 내 관심사 */
+
+.interest-grid {
+  display: grid;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.interest-card {
+  overflow: hidden;
+
+  background-color: #fff;
+
+  border: 1px solid #ddd;
+  border-radius: 16px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* 카드에 마우스를 올리면 살짝 위로 이동 */
+.interest-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.interest-card img {
+  display: block;
+
+  width: 100%;
+  height: 180px;
+
+  object-fit: cover;
+}
+
+.interest-card h3 {
+  margin: 0;
+
+  padding: 14px 12px 8px;
+
+  text-align: center;
+
+  font-size: 17px;
+}
+
+.interest-buttons {
+  display: flex;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 8px 12px 16px;
+}
+
+.interest-buttons button {
+  padding: 8px 14px;
+
+  border: none;
+  border-radius: 20px;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.like-button {
+  background-color: #bde3ff;
+  color: #24658b;
+}
+
+.dislike-button {
+  background-color: #ffd0cd;
+  color: #9a4943;
+}
+
+.like-button:hover {
+  background-color: #74c7f2;
+  color: white;
+
+  transform: scale(1.05);
+}
+
+.dislike-button:hover {
+  background-color: #f28b82;
+  color: white;
+
+  transform: scale(1.05);
+}
+
+/* 화면이 작아질수록 관심사 카드 열 개수 줄이기 */
+@media (max-width: 1200px) {
+  .interest-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .interest-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .interest-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .interest-card img {
+    height: 150px;
+  }
+
+  .interest-buttons {
+    gap: 6px;
+  }
+
+  .interest-buttons button {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+}
+
+
+/* To. 웹토리 */
+
+.webtory-message {
+  padding: 24px 28px;
+
+  background-color: #fff;
+
+  border-radius: 18px;
+}
+
+.webtory-message p {
+  margin: 0;
+
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.webtory-message p + p {
+  margin-top: 6px;
+}
+
+/* 텍스트 앞뒤 아이콘은 가상 요소로 추가 */
+.webtory-message p::before {
+  content: "💚 ";
+}
+
+.webtory-message p::after {
+  content: " 💚";
+}
+
+.webtory-section {
+  min-height: auto;
+}
+
+
+/* 푸터 */
+
+.footer {
+  width: 100%;
+
+  margin: 0;
+  padding: 22px 24px;
+
+  background-color: #222;
+  color: white;
+
+  text-align: center;
+}
+
+.footer p {
+  margin: 0 0 6px;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.footer small {
+  font-size: 12px;
+
+  color: #ccc;
+}
+
+
+/* 화면이 좁아졌을 때 전체 레이아웃 조정 */
+
+@media (max-width: 900px) {
+  .page-layout {
+    grid-template-columns: 170px minmax(0, 1fr);
+
+    gap: 18px;
+
+    width: calc(100% - 32px);
+  }
+
+  .navigation {
+    width: 170px;
+  }
+
+  .navigation a {
+    padding: 20px 16px;
+
+    font-size: 17px;
+  }
+
+  .section {
+    padding: 28px;
+  }
+
+  .likes-card {
+    flex-basis: 220px;
+    height: 280px;
+  }
+}
