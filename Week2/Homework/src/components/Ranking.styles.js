@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { colors } from "../styles/colors";
 
 export const Container = styled.section`
   max-width: 660px;
@@ -20,10 +21,10 @@ export const Title = styled.h2`
 
 export const ResetButton = styled.button`
   padding: 8px 14px;
-  border: 1px solid #e5484d;
+  border: 1px solid ${colors.red};
   border-radius: 6px;
-  background-color: white;
-  color: #e5484d;
+  background-color: ${colors.white};
+  color: ${colors.red};
 
   &:hover {
     background-color: #fff1f1;
@@ -41,7 +42,7 @@ export const Table = styled.table`
   border-collapse: collapse;
   border-radius: 10px;
   overflow: hidden;
-  background-color: white;
+  background-color: ${colors.white};
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   text-align: left;
 
@@ -53,6 +54,6 @@ export const Table = styled.table`
   }
 
   th {
-    background-color: #8bf9db;
+    background-color: ${colors.primary};
   }
 `;

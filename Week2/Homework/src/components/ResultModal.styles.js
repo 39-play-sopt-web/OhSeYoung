@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { colors } from "../styles/colors";
 
 export const Overlay = styled.div`
   position: fixed;
@@ -16,22 +17,22 @@ export const Box = styled.div`
   width: 360px;
   padding: 28px;
   border-radius: 10px;
-  background-color: white;
+  background-color: ${colors.white};
   text-align: center;
-  color: #666;
+  color: ${colors.gray};
 `;
 
 export const Title = styled.h2`
   margin: 0;
   font-size: 20px;
-  color: #202124;
+  color: ${colors.text};
 `;
 
 export const Time = styled.strong`
   display: block;
   margin: 22px 0;
   font-size: 32px;
-  color: #202124;
+  color: ${colors.text};
 `;
 
 export const Button = styled.button`
@@ -39,11 +40,11 @@ export const Button = styled.button`
   padding: 12px;
   border: none;
   border-radius: 8px;
-  background-color: #8bf9db;
-  color: #1a191e;
+  background-color: ${colors.primary};
+  color: ${colors.text};
   font-weight: 700;
 
   &:hover {
-    background-color: #3dd6a8;
+    background-color: ${colors.primaryDark};
   }
 `;

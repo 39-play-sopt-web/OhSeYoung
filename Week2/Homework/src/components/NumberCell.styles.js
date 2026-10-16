@@ -1,14 +1,15 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
+import { colors } from "../styles/colors";
 
 // 누른 칸 민트색으로 깜빡
 const flash = keyframes`
   0% {
-    background-color: #3dd6a8;
+    background-color: ${colors.primaryDark};
     transform: scale(0.94);
   }
   100% {
-    background-color: white;
+    background-color: ${colors.white};
     transform: scale(1);
   }
 `;
@@ -16,7 +17,7 @@ const flash = keyframes`
 // 빈칸 될 때도 깜빡이게
 const emptyFlash = keyframes`
   0% {
-    background-color: #3dd6a8;
+    background-color: ${colors.primaryDark};
     transform: scale(0.94);
   }
   100% {
@@ -28,8 +29,8 @@ const emptyFlash = keyframes`
 export const Cell = styled.button`
   border: 1px solid #e3e3e3;
   border-radius: 10px;
-  background-color: white;
-  color: #1a191e;
+  background-color: ${colors.white};
+  color: ${colors.text};
   font-size: 24px;
   font-weight: 700;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
@@ -40,7 +41,7 @@ export const Cell = styled.button`
   }
 
   &:active {
-    background-color: #3dd6a8;
+    background-color: ${colors.primaryDark};
     transform: scale(0.94);
   }
 `;
