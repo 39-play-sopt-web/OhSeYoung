@@ -38,10 +38,12 @@
     <div class="page-layout">
       <!-- 왼쪽 네비게이션 -->
       <nav class="navigation">
-        <a href="#photo">📷 포토 덤프</a>
-        <a href="#likes">좋아하는 것</a>
-        <a href="#interests">내 관심사</a>
-        <a href="#webtory">To.웹토리</a>
+        <ul>
+          <li><a href="#photo">📷 포토 덤프</a></li>
+          <li><a href="#likes">좋아하는 것</a></li>
+          <li><a href="#interests">내 관심사</a></li>
+          <li><a href="#webtory">To.웹토리</a></li>
+        </ul>
       </nav>
 
       <main class="main-content">
@@ -51,27 +53,42 @@
 
           <div class="photo-grid">
             <div class="photo-item photo-1">
-              <img src="./images/photo1.jpg" alt="포토덤프 이미지 1" />
+              <img
+                src="./images/photo1.jpg"
+                alt="지하철 승강장에서 브이하는 사진"
+              />
             </div>
 
             <div class="photo-item photo-2">
-              <img src="./images/photo2.jpg" alt="포토덤프 이미지 2" />
+              <img
+                src="./images/photo2.jpg"
+                alt="친구들과 카드게임 하는 모습"
+              />
             </div>
 
             <div class="photo-item photo-3">
-              <img src="./images/photo3.jpg" alt="포토덤프 이미지 3" />
+              <img
+                src="./images/photo3.jpg"
+                alt="보랏빛 조명이 켜진 페스티벌 무대"
+              />
             </div>
 
             <div class="photo-item photo-4">
-              <img src="./images/photo4.jpg" alt="포토덤프 이미지 4" />
+              <img
+                src="./images/photo4.jpg"
+                alt="한강공원에서 친구들과 스케이트보드 타는 모습"
+              />
             </div>
 
             <div class="photo-item photo-5">
-              <img src="./images/photo5.jpg" alt="포토덤프 이미지 5" />
+              <img
+                src="./images/photo5.jpg"
+                alt="콘서트장에서 티켓 세 장을 들고 찍은 사진"
+              />
             </div>
 
             <div class="photo-item photo-6">
-              <img src="./images/photo6.jpg" alt="포토덤프 이미지 6" />
+              <img src="./images/photo6.jpg" alt="차 운전석에 앉아 있는 모습" />
             </div>
           </div>
         </section>
@@ -116,8 +133,8 @@
               </div>
             </div>
 
-            <!-- 무한 루프용으로 같은 사진 묶음 한 번 더 -->
-            <div class="likes-set">
+            <!-- 무한 루프용으로 같은 사진 묶음 한 번 더 (스크린리더가 두 번 읽지 않게 aria-hidden) -->
+            <div class="likes-set" aria-hidden="true">
               <div class="likes-card">
                 <img src="./images/cat1.jpg" alt="" />
               </div>

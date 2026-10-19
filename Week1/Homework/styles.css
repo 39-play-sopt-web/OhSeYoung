@@ -1,3 +1,18 @@
+/* 자주 쓰는 색상 변수 */
+:root {
+  --color-bg: #dfffee;
+  --color-text: #222;
+  --color-point: #18856f;
+  --color-white: #fff;
+  --color-border: #ddd;
+  --color-like: #bde3ff;
+  --color-like-text: #24658b;
+  --color-like-hover: #74c7f2;
+  --color-dislike: #ffd0cd;
+  --color-dislike-text: #9a4943;
+  --color-dislike-hover: #f28b82;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -8,11 +23,10 @@ html {
 
 body {
   margin: 0;
-  background-color: #dfffee;
+  background-color: var(--color-bg);
   font-family: Arial, sans-serif;
-  color: #222;
+  color: var(--color-text);
 }
-
 
 /* 헤더 */
 
@@ -29,7 +43,7 @@ body {
   height: 70px;
 
   background-color: rgba(255, 255, 255, 0.9);
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .header-left,
@@ -83,7 +97,6 @@ body {
   transform: scale(1.1);
 }
 
-
 /* 전체 레이아웃 */
 
 .page-layout {
@@ -95,7 +108,6 @@ body {
   width: calc(100% - 48px);
   margin: 0 auto;
 }
-
 
 /* 왼쪽 네비게이션 */
 
@@ -117,10 +129,17 @@ body {
   overflow: hidden;
 }
 
+.navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .navigation a {
+  display: block;
   padding: 26px 24px;
 
-  color: #222;
+  color: var(--color-text);
   text-decoration: none;
 
   font-size: 22px;
@@ -134,23 +153,20 @@ body {
     color 0.25s ease;
 }
 
-.navigation a:last-child {
-  border-bottom: none;
-}
-
 .navigation a:hover {
-  background-color: #18856f;
-  color: white;
+  background-color: var(--color-point);
+  color: var(--color-white);
 }
 
-.navigation a:first-child {
+.navigation li:first-child a {
   border-radius: 20px 20px 7px 7px;
 }
 
-.navigation a:last-child {
+/* 마지막 메뉴는 아래 줄 없애고 아래쪽만 둥글게 (중복 선택자 합침) */
+.navigation li:last-child a {
+  border-bottom: none;
   border-radius: 7px 7px 20px 20px;
 }
-
 
 /* 본문 공통 */
 
@@ -177,7 +193,6 @@ body {
 .section h2 {
   margin-top: 0;
 }
-
 
 /* 포토 덤프 */
 
@@ -249,7 +264,6 @@ body {
   grid-row: 3;
 }
 
-
 /* 좋아하는 것 */
 
 .likes-description {
@@ -294,7 +308,7 @@ body {
 
   overflow: hidden;
 
-  background-color: #fff;
+  background-color: var(--color-white);
   border-radius: 18px;
 
   scroll-snap-align: start;
@@ -327,7 +341,6 @@ body {
   }
 }
 
-
 /* 내 관심사 */
 
 .interest-grid {
@@ -341,9 +354,9 @@ body {
 .interest-card {
   overflow: hidden;
 
-  background-color: #fff;
+  background-color: var(--color-white);
 
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 16px;
 
   transition:
@@ -403,37 +416,62 @@ body {
 }
 
 .like-button {
-  background-color: #bde3ff;
-  color: #24658b;
+  background-color: var(--color-like);
+  color: var(--color-like-text);
 }
 
 .dislike-button {
-  background-color: #ffd0cd;
-  color: #9a4943;
+  background-color: var(--color-dislike);
+  color: var(--color-dislike-text);
 }
 
 .like-button:hover {
-  background-color: #74c7f2;
-  color: white;
+  background-color: var(--color-like-hover);
+  color: var(--color-white);
 
   transform: scale(1.05);
 }
 
 .dislike-button:hover {
-  background-color: #f28b82;
-  color: white;
+  background-color: var(--color-dislike-hover);
+  color: var(--color-white);
 
   transform: scale(1.05);
 }
 
-/* 화면이 작아질수록 관심사 카드 열 개수 줄이기 */
+/* 화면 크기별 조정 */
 @media (max-width: 1200px) {
   .interest-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
+/* 900px 이하 설정은 여기 한 곳에 모음 */
 @media (max-width: 900px) {
+  .page-layout {
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 18px;
+    width: calc(100% - 32px);
+  }
+
+  .navigation {
+    width: 170px;
+  }
+
+  .navigation a {
+    padding: 20px 16px;
+    font-size: 17px;
+  }
+
+  .section {
+    padding: 28px;
+  }
+
+  .likes-card {
+    flex-basis: 220px;
+    height: 280px;
+  }
+
   .interest-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -458,13 +496,12 @@ body {
   }
 }
 
-
 /* To. 웹토리 */
 
 .webtory-message {
   padding: 24px 28px;
 
-  background-color: #fff;
+  background-color: var(--color-white);
 
   border-radius: 18px;
 }
@@ -493,7 +530,6 @@ body {
   min-height: auto;
 }
 
-
 /* 푸터 */
 
 .footer {
@@ -502,8 +538,8 @@ body {
   margin: 0;
   padding: 22px 24px;
 
-  background-color: #222;
-  color: white;
+  background-color: var(--color-text);
+  color: var(--color-white);
 
   text-align: center;
 }
@@ -519,36 +555,4 @@ body {
   font-size: 12px;
 
   color: #ccc;
-}
-
-
-/* 화면이 좁아졌을 때 전체 레이아웃 조정 */
-
-@media (max-width: 900px) {
-  .page-layout {
-    grid-template-columns: 170px minmax(0, 1fr);
-
-    gap: 18px;
-
-    width: calc(100% - 32px);
-  }
-
-  .navigation {
-    width: 170px;
-  }
-
-  .navigation a {
-    padding: 20px 16px;
-
-    font-size: 17px;
-  }
-
-  .section {
-    padding: 28px;
-  }
-
-  .likes-card {
-    flex-basis: 220px;
-    height: 280px;
-  }
 }
