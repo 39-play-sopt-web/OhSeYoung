@@ -39,7 +39,8 @@ function Ranking() {
           </thead>
           <tbody>
             {records.map((record, index) => (
-              <tr key={index}>
+              // 리뷰 반영: 신규 기록은 ID를 key로, 기존 저장 기록은 임시 대체 key를 사용
+              <tr key={record.id ?? `${record.playedAt}-${index}`}>
                 <td>{index + 1}</td>
                 <td>Level {record.level}</td>
                 <td>{record.playTime.toFixed(2)}초</td>

@@ -27,6 +27,9 @@ const emptyFlash = keyframes`
 `;
 
 export const Cell = styled.button`
+  /* 리뷰 반영: 숫자 버튼도 그리드 칸 크기를 넘지 않게 설정 */
+  min-width: 0;
+  min-height: 0;
   border: 1px solid #e3e3e3;
   border-radius: 10px;
   background-color: ${colors.white};
@@ -47,6 +50,9 @@ export const Cell = styled.button`
 `;
 
 export const EmptyCell = styled.div`
+  /* 리뷰 반영: 빈칸도 숫자 버튼과 같은 그리드 칸 크기를 유지 */
+  min-width: 0;
+  min-height: 0;
   border: 1px dashed #d6d6d6;
   border-radius: 10px;
   background-color: transparent;

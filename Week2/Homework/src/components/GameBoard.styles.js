@@ -19,7 +19,9 @@ export const Progress = styled.p`
 
 export const Board = styled.div`
   display: grid;
-  grid-template-columns: repeat(${({ boardSize }) => boardSize}, 1fr);
+  /* 리뷰 반영: 각 레벨의 행과 열을 균등하게 배치해서 빈칸이 생겨도 셀 크기를 유지 */
+  grid-template-columns: repeat(${({ boardSize }) => boardSize}, minmax(0, 1fr));
+  grid-template-rows: repeat(${({ boardSize }) => boardSize}, minmax(0, 1fr));
   gap: 10px;
   width: 470px;
   max-width: 100%;
