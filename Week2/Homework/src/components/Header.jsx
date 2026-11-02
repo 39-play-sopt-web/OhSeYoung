@@ -18,7 +18,12 @@ function Header({ menu, onMenuChange, level, onLevelChange, time }) {
         {menu === 'game' && (
           <>
             {/* value가 문자열로 넘어와서 Number로 바꿈 */}
-            <S.Select value={level} onChange={(e) => onLevelChange(Number(e.target.value))}>
+            {/* 리뷰 반영: 스크린리더에 레벨 선택창의 용도를 알리기 위한 이름 추가 */}
+            <S.Select
+              aria-label="게임 레벨"
+              value={level}
+              onChange={(e) => onLevelChange(Number(e.target.value))}
+            >
               <option value={1}>Level 1</option>
               <option value={2}>Level 2</option>
               <option value={3}>Level 3</option>

@@ -1,25 +1,19 @@
 import styled from "@emotion/styled";
 import { colors } from "../styles/colors";
 
-export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.35);
-`;
-
-export const Box = styled.div`
-  width: 360px;
+// 리뷰 반영: 일반 div 대신 dialog와 ::backdrop을 사용해 모달을 구현
+export const Box = styled.dialog`
+  width: min(360px, calc(100% - 32px));
   padding: 28px;
+  border: none;
   border-radius: 10px;
   background-color: ${colors.white};
   text-align: center;
   color: ${colors.gray};
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.35);
+  }
 `;
 
 export const Title = styled.h2`
