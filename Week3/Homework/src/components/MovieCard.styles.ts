@@ -8,7 +8,7 @@ export const Card = styled(Link)`
   border: 1px solid transparent;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.card};
-  transition: all 0.2s;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 
   &:hover {
     transform: translateY(-4px) scale(1.02);
