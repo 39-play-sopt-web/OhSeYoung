@@ -13,17 +13,27 @@ function MovieDetailPage() {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    let ignore = false; // 목록 페이지처럼 이전 영화 응답이 늦게 와도 무시
+
     const fetchMovie = async () => {
       if (!movieId) return;
       try {
         const data = await getMovieDetail(movieId);
+        if (ignore) return;
         setMovie(data);
       } catch (error) {
+        if (ignore) return;
         console.error('영화 정보를 불러오지 못했습니다.', error);
         setIsError(true);
       }
     };
+
+    window.scrollTo(0, 0); // 목록에서 많이 내리고 들어오면 스크롤 위치가 그대로 남아 있어서
     fetchMovie();
+
+    return () => {
+      ignore = true;
+    };
   }, [movieId]);
 
   if (isError) {
