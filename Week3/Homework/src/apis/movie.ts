@@ -2,7 +2,8 @@ import { apiClient } from './apiClient';
 import type { MovieDetail, MovieListResponse } from '../types/movie';
 
 // 영화 목록 (별점 범위로 필터링)
-export const getMovies = async (page: number, gte: number, lte: number) => {
+// 숫자 3개라 순서 헷갈리지 않게 객체로 받음
+export const getMovies = async ({ page, gte, lte }: { page: number; gte: number; lte: number }) => {
   const res = await apiClient.get<MovieListResponse>('/discover/movie', {
     params: {
       page,

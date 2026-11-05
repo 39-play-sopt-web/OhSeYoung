@@ -21,16 +21,23 @@ function MovieListPage() {
 
     const fetchMovies = async () => {
       try {
-        const data = await getMovies(page, filter.gte, filter.lte);
+        const data = await getMovies({ page, gte: filter.gte, lte: filter.lte });
         if (ignore) return;
 
+        // API의 lte는 그 점수도 포함이라 9.0점이 '9점 이상'이랑 '8 ~ 9점'에 둘 다 나옴
+        // 그래서 위쪽 끝은 미만으로 한 번 더 거름 (lte가 10인 전체, 9점 이상은 그대로)
+        const results =
+          filter.lte === 10
+            ? data.results
+            : data.results.filter((movie) => movie.vote_average < filter.lte);
+
         if (page === 1) {
-          setMovies(data.results);
+          setMovies(results);
         } else {
           // 다음 페이지에 같은 영화가 또 오는 경우가 있어서 (key 중복 경고 뜸) 이미 있는 건 빼고 추가
           setMovies((prev) => [
             ...prev,
-            ...data.results.filter((movie) => !prev.some((item) => item.id === movie.id)),
+            ...results.filter((movie) => !prev.some((item) => item.id === movie.id)),
           ]);
         }
         setHasMore(page < data.total_pages && page < 500); // TMDB는 500페이지까지만 됨
